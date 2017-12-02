@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 
 export class Users extends Component {
 
-
-
   render() {
-    const allUsers = this.props.store.users;
+    const allUsers = this.props.store.getState().users.map(function(user, index) {
+      return(
+        <div key={index}>
+          <li>{user.userName} -- {user.hometown}</li>
+        </div>
+      )
+    })
     return (
       <div>
         <ul>
-        {this.props.store.users}
-          /* stuff should happen around here */
-        
-
+        <p>Username -------  Hometown:</p>
+        {allUsers}
         </ul>
       </div>
     )
