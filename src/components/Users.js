@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export class Users extends Component {
+class Users extends Component {
 
   render() {
     const allUsers = this.props.store.getState().users.map(function(user, index) {
@@ -26,6 +26,6 @@ const mapStateToProps = (state) => {
   return { users: state.users };
 };
 
-export default connect(mapStateToProps)(Users)
-
-//export const ConnectedUsers = Users // aren't we supposed to be connecting something around here?
+//export default connect(mapStateToProps)(Users)
+const ConnectedUsers = connect(mapStateToProps)(Users); // aren't we supposed to be connecting something around here?
+export default ConnectedUsers;
